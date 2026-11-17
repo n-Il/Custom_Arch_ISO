@@ -1,0 +1,17 @@
+import time
+import sys
+class Solution(object):
+    def leetcode(self):
+        return
+
+
+def main():
+    s = Solution()
+    result = s.leetcode()
+    print(result)
+    return
+
+if __name__ == "__main__":
+    start_time = time.time()
+    main()
+    print("[Elapsed Seconds:{elapsed_seconds:0.2f}]".format(elapsed_seconds = (time.time() - start_time)))

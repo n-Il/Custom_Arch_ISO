@@ -1,0 +1,21 @@
+# Maintainer: Your Name <your.email@example.com>
+pkgname=install-files
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="custom package for install files"
+arch=('any')
+url="https://github.com" # Optional
+license=('MIT')
+depends=('bash') # Add packages that rely on these configs if desired
+# List the local configuration files to include in the package
+source=('files.tar.gz')
+
+sha256sums=('SKIP')
+
+# The backup array prevents pacman from overwriting modified configurations on update
+backup=()
+
+package() {
+    install -dm755 "$pkgdir/etc/install-files"
+    cp -r "$srcdir/files/." "$pkgdir/etc/install-files/"
+}

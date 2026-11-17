@@ -1,0 +1,13 @@
+{
+    "root_enc_password": "$y$j9T$VzFCnarD7r15g3.skhXSx/$j8x3g04GA7HhjW0RF4Eme5gIn5qTqS9DhBeeFtgu4xC",
+    "users": [
+        {
+            "enc_password": "$y$j9T$4eJ0LOKr/uM2Gj9hyzkmI0$vh.MGCxi4YT9qKeN016cb2itXJKb4NerLkwDzqHlt69",
+            "groups": [
+                "kvm"
+            ],
+            "sudo": true,
+            "username": "user"
+        }
+    ]
+}

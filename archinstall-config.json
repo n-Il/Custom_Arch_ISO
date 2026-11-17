@@ -1,0 +1,207 @@
+{
+    "archinstall_language": "English",
+    "bootloader": "Grub",
+    "custom_commands": [
+
+        "echo 'start services'",
+        "systemctl enable --now libvirtd.service",
+        "systemctl enable --now NetworkManager.service",
+        
+        "echo 'add users to group'",
+        "usermod -aG libvirt USERNAME",
+
+        "echo 'create folder used by logging for awesome'",
+        "mkdir /home/USERNAME/.cache",
+        "mkdir /home/USERNAME/.cache/awesome",
+        
+        "echo 'move files'",
+        "mv /etc/install-files/home/.bashrc /home/USERNAME/",
+        "mv /etc/install-files/home/.bash_profile /home/USERNAME/",
+        "mv /etc/install-files/home/.vimrc /home/USERNAME/",
+        "mv /etc/install-files/home/.xinitrc /home/USERNAME/",
+        "mv /etc/install-files/home/.Xdefaults /home/USERNAME/",
+        "mv /etc/install-files/home/.vim /home/USERNAME/",
+        "mv /etc/install-files/home/.mozilla /home/USERNAME/",
+        "mkdir /home/USERNAME/.config",
+        "mkdir /home/USERNAME/.config/awesome",
+        "mv /etc/install-files/home/.config/awesome /home/USERNAME/.config/",
+        
+        "mkdir /etc/X11/xorg-conf-d/",
+        "mv /etc/install-files/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/",
+        "cat /etc/install-files/etc/environment >> /etc/environment",
+        
+        "mv /etc/install-files/etc/libvirt/libvirtd.conf /etc/libvirt/libvirtd.conf",
+
+        "echo '/etc/libvirt/qemu.conf configuration'",
+        "sudo sed -i -E 's/^#+[[:space:]]*(user|group) = \"libvirt-qemu\"/\\1 = \"USERNAME\"/' /etc/libvirt/qemu.conf",
+
+        "echo 'change file permissions'",
+        "chown -R USERNAME:USERNAME /home/USERNAME",
+
+        "sed -zi 's|\\n\\[customrepo\\]\\nSigLevel = Optional TrustAll\\nServer = file:///etc/customrepo||' /etc/pacman.conf"
+    ],
+    "disk_config": {
+      "btrfs_options": {
+        "snapshot_config": null
+      },
+      "config_type": "default_layout",
+      "device_modifications": [
+        {
+          "device": "/dev/vda",
+          "partitions": [
+            {
+              "btrfs": [],
+              "dev_path": null,
+              "flags": [
+                "boot",
+                "esp"
+              ],
+              "fs_type": "fat32",
+              "mount_options": [],
+              "mountpoint": "/boot",
+              "obj_id": "6b092f2b-32c3-4a92-8ca5-c025cf3e9742",
+              "size": {
+                "sector_size": {
+                  "unit": "B",
+                  "value": 512
+                },
+                "unit": "MiB",
+                "value": 1024
+              },
+              "start": {
+                "sector_size": {
+                  "unit": "B",
+                  "value": 512
+                },
+                "unit": "MiB",
+                "value": 1
+              },
+              "status": "create",
+              "type": "primary"
+            },
+            {
+              "btrfs": [],
+              "dev_path": null,
+              "flags": [],
+              "fs_type": "ext4",
+              "mount_options": [],
+              "mountpoint": "/",
+              "obj_id": "48f3e30b-d801-4abb-8350-4c5d82d9d8a7",
+              "size": {
+                "sector_size": {
+                  "unit": "B",
+                  "value": 512
+                },
+                "unit": "MiB",
+                "value": 0
+              },
+              "start": {
+                "sector_size": {
+                  "unit": "B",
+                  "value": 512
+                },
+                "unit": "MiB",
+                "value": 1025
+              },
+              "status": "create",
+              "type": "primary"
+            }
+          ],
+          "wipe": true
+        }
+      ]
+    },
+    "filesystem": "ext4",
+    "hostname": "hostname",
+    "keyboard-layout": "us",
+    "ntp": true,
+    "packages": [
+        "intel-ucode",
+        "man",
+
+        "install-files",
+
+        "xorg",
+        "xorg-server",
+        "xorg-xinit",
+        "xorg-xset",
+        "xorg-xinput",
+        "wget",
+        "awesome",
+        "rxvt-unicode",
+        "gvim",
+        "slock",
+        "firefox",
+
+        "networkmanager",
+        "vlc",
+        "unzip",
+        "gnu-free-fonts",
+        "adobe-source-code-pro-fonts",
+        "adobe-source-han-sans-cn-fonts",
+        "adobe-source-han-sans-hk-fonts",
+        "adobe-source-han-sans-tw-fonts",
+        "adobe-source-han-serif-cn-fonts",
+        "adobe-source-han-serif-hk-fonts",
+        "adobe-source-han-serif-tw-fonts",
+        "noto-fonts",
+        "noto-fonts-cjk",
+        "noto-fonts-emoji",
+        "ttf-arphic-ukai",
+        "ttf-hack-nerd",
+        "ttf-liberation",
+        "ttf-roboto",
+        "ttf-sarasa-gothic",
+        "wqy-zenhei",
+
+        "scons",
+        "qmk",
+        "archiso",
+        "base-devel",
+        "cmake",
+        "code",
+        "dotnet-sdk",
+        "git",
+        "godot",
+        "godot-mono",
+        "leiningen",
+        "clojure",
+        "make",
+        "python",
+        "python-pip",
+        "spirv-headers",
+        "blender",
+        "gimp",
+        "discord",
+        "maim",
+        "obs-studio",
+        "openssh",
+        "radeontop",
+        "bluetui",
+        "bluez",
+        "bluez-utils",
+        "dnsmasq",
+        "libvirt",
+        "qemu-full",
+        "virt-manager",
+        "openbsd-netcat",
+
+        "ibus",
+        "ibus-libpinyin",
+
+        "pavucontrol",
+        "pulseaudio",
+        "pulseaudio-alsa",
+        "pulseaudio-bluetooth",
+
+        "xf86-video-amdgpu",
+        "xf86-video-vesa",
+
+        "xclip",
+        "zip"
+    ],
+    "swap": false,
+    "sys-encoding": "utf-8",
+    "sys-language": "en_US",
+    "timezone": "America/New_York"
+}
