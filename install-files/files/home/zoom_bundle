@@ -1,0 +1,8 @@
+#zoom AUR
+#git clone https://aur.archlinux.org/zoom.git
+#cd zoom
+#makepkg -si
+
+#FAST COMPOSITOR
+#git clone https://github.com/tycho-kirchner/fastcompmgr.git
+#https://github.com/tycho-kirchner/fastcompmgr/releases/
